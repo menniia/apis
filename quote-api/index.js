@@ -1,6 +1,6 @@
 import express from "express";
 import quotesRouter from "./quotesRoute.js";
-
+// import cors from "cors";
 
 const app = express();
 
@@ -8,8 +8,7 @@ app.use(express.json())
 
 app.use(express.static("public"));
 
-app.use("/api/quotes", quotesRouter)
-
+app.use("/api/quotes", quotesRouter);
 
 const PORT = process.env.PORT || 4001;
 

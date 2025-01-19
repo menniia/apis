@@ -4,19 +4,17 @@ import { quotes } from "./data.js";
 
 const quotesRouter = Router();
 
-
-
 quotesRouter.get("/random", (req, res, next) => {
     const randomQuote = getRandomElementFromArray(quotes);
-    res.json({ quotes: randomQuote });
-});
+    res.json({ quote: randomQuote });
+})
 
 quotesRouter.get("/", (req, res, next) => {
     const person = req.query.person;
     if (person) {
         const quoteByPerson = quotes.filter((quote) => {
-            return quote.person === person
-        })
+            return quote.person.toLowerCase() === person.toLocaleLowerCase()
+        });
         res.json({ quotes: quoteByPerson });
     }
     res.json({ quotes: quotes });
